@@ -24,6 +24,7 @@ _logger = getLogger(__name__)
 class LightstepOTLPSpanExporter(OTLPSpanExporter):
     def export(self, *args, **kwargs):
         try:
+            _logging.info("exporting span")
             super().export(*args, **kwargs)
         except Exception as error:
             _logger.exception("Unable to export spans to satellite: %s", error)

@@ -99,6 +99,8 @@ def _common_configuration(
     credentials = None
     return credentials
 
+def mysum(a, b):
+    return a + b
 
 def configure_opentelemetry(
     access_token: str = _LS_ACCESS_TOKEN,
@@ -111,6 +113,8 @@ def configure_opentelemetry(
     span_exporter_insecure: bool = _OTEL_EXPORTER_OTLP_TRACES_INSECURE,
     _auto_instrumented: bool = False,
 ):
+    _logger.info("configuring opentelemetry")
+
     # pylint: disable=too-many-locals
     # pylint: disable=too-many-statements
     """
@@ -161,7 +165,6 @@ def configure_opentelemetry(
             if an insecure channel is to be used to send spans to the
             satellite. Defaults to `False`.
     """
-
     log_levels = {
         "NOTSET": NOTSET,
         "DEBUG": DEBUG,
