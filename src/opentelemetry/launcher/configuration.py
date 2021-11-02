@@ -91,11 +91,12 @@ def _common_configuration(
         # method of setting configuration.
         provider_setter(provider_class())
 
-    if insecure:
-        credentials = None
-    else:
-        credentials = ssl_channel_credentials()
+    # if insecure:
+        # credentials = None
+    # else:
+        # credentials = ssl_channel_credentials()
 
+    credentials = None
     return credentials
 
 
