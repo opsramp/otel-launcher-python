@@ -13,3 +13,4 @@
 # limitations under the License.
 
 from opentelemetry.launcher.configuration import configure_opentelemetry
+from opentelemetry.launcher.configuration import mysum
