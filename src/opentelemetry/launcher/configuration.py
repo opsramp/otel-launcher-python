@@ -210,32 +210,6 @@ def configure_opentelemetry(
         _logger.error(message)
         raise InvalidConfigurationError(message)
 
-    if access_token is None:
-        if (
-            span_exporter_endpoint
-            == _DEFAULT_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-        ):
-            message = (
-                "Invalid configuration: token missing. "
-                "Must be set to send data to {}. "
-                "Set environment variable LS_ACCESS_TOKEN"
-            ).format(_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT)
-            if not _auto_instrumented:
-                message += (
-                    " or call configure_opentelemetry "
-                    "with access_token defined"
-                )
-            _logger.error(message)
-            raise InvalidConfigurationError(message)
-
-    if access_token is not None and not _validate_token(access_token):
-        message = (
-            "Invalid configuration: invalid token. "
-            "Token must be a 32, 84 or 104 character long string."
-        )
-        _logger.error(message)
-        raise InvalidConfigurationError(message)
-
     _logger.debug("configuring propagation")
 
     propagator_instances = []
